@@ -28,15 +28,16 @@ from sklearn.svm import SVC
 
 """#Funções Básicas"""
 
-def NormalImages(direction, label):
+def NormalImages(direction, label, target_size=(176, 208)):
   list_dir = os.listdir(direction)
   new_list = []
 
   for i in list_dir:
-    img= plt.imread(os.path.join(direction, i))
+    img = plt.imread(os.path.join(direction, i))
+    img = cv2.resize(img, target_size)
     new_list.append((img, label))
 
-  return new_list
+  return np.array(new_list, dtype=object)
 
 def Visualize(images):
     plt.figure(figsize=(14,8))
@@ -338,8 +339,24 @@ for i in LBP_features:
   x.append(i[0])
   label.append(i[1])
 
-X_LBP = x
-labels_LBP = label
+max_lbp_lenght = max(len(feature) for feature, label in LBP_features)
+
+X_LBP = []
+labels_LBP = []
+
+for feature, label in LBP_features:
+  if len(feature) < max_lbp_lenght:
+    feature += [0] * (max_lbp_lenght - len(feature))
+  elif len(feature) > max_lbp_lenght:
+     feature = feature[:max_lbp_lenght]
+  X_LBP.append(feature)
+  labels_LBP.append(label)
+
+X_LBP = np.array(X_LBP, dtype=object)
+labels_LBP = np.array(labels_LBP, dtype=object)
+
+#X_LBP = x
+#labels_LBP = label
 
 X_train_LBP, X_test_LBP, y_train_LBP, y_test_LBP = train_test_split(X_LBP, labels_LBP, test_size=0.2, random_state=42)
 
@@ -351,11 +368,11 @@ y_pred_LBP = clf_LBP.predict(X_test_LBP)
 acc_LBP = accuracy_score(y_test_LBP, y_pred_LBP)
 print("Accuracy LBP: {:.2f}%".format(acc_LBP*100))
 
-x_min_LBP, x_max_LBP = np.array(X_train_LBP)[:, 0].min() - 1, np.array(X_train_LBP)[:, 0].max() + 1
-y_min_LBP, y_max_LBP = np.array(X_train_LBP)[:, 1].min() - 1, np.array(X_train_LBP)[:, 1].max() + 1
+x_min_LBP, x_max_LBP = np.array(X_train_LBP, dtype=object)[:, 0].min() - 1, np.array(X_train_LBP, dtype=object)[:, 0].max() + 1
+y_min_LBP, y_max_LBP = np.array(X_train_LBP, dtype=object)[:, 1].min() - 1, np.array(X_train_LBP, dtype=object)[:, 1].max() + 1
 h_LBP = ((x_max_LBP / x_min_LBP) / 100)
 xx_LBP, yy_LBP = np.meshgrid(np.arange(x_min_LBP, x_max_LBP, h_LBP), np.arange(y_min_LBP, y_max_LBP, h_LBP))
 
-plt.scatter(np.array(X_train_LBP)[:, 0], np.array(X_train_LBP)[:, 1], c=y_train_LBP, cmap=plt.cm.Paired)
+plt.scatter(np.array(X_train_LBP, dtype=object)[:, 0], np.array(X_train_LBP, dtype=object)[:, 1], c=y_train_LBP, cmap=plt.cm.Paired)
 plt.xlim(xx_LBP.min(), xx_LBP.max())
 plt.show()
