@@ -59,14 +59,14 @@ def Area(img):
 
 """#Adquirindo as Imagens"""
 
-demented = NormalImages('../dataset/Alzheimer_s Dataset/test/MildDemented', 1)
-demented = np.concatenate([demented , NormalImages('../dataset/Alzheimer_s Dataset/train/MildDemented', 1)])
-demented = np.concatenate([demented , NormalImages('../dataset/Alzheimer_s Dataset/test/VeryMildDemented', 1)])
-demented = np.concatenate([demented , NormalImages('../dataset/Alzheimer_s Dataset/train/VeryMildDemented', 1)])
-demented = np.concatenate([demented , NormalImages('../dataset/Alzheimer_s Dataset/test/VeryMildDemented', 1)])
-demented = np.concatenate([demented , NormalImages('../dataset/Alzheimer_s Dataset/train/ModerateDemented', 1)])
-nonDemented = NormalImages('../dataset/Alzheimer_s Dataset/test/NonDemented', 0)
-nonDemented = np.concatenate([nonDemented, NormalImages('../dataset/Alzheimer_s Dataset/train/NonDemented', 0)])
+demented = NormalImages('dataset/Alzheimer_s Dataset/test/MildDemented', 1)
+demented = np.concatenate([demented , NormalImages('dataset/Alzheimer_s Dataset/train/MildDemented', 1)])
+demented = np.concatenate([demented , NormalImages('dataset/Alzheimer_s Dataset/test/ModerateDemented', 1)])
+demented = np.concatenate([demented , NormalImages('dataset/Alzheimer_s Dataset/train/ModerateDemented', 1)])
+demented = np.concatenate([demented , NormalImages('dataset/Alzheimer_s Dataset/test/VeryMildDemented', 1)])
+demented = np.concatenate([demented , NormalImages('dataset/Alzheimer_s Dataset/train/VeryMildDemented', 1)])
+nonDemented = NormalImages('dataset/Alzheimer_s Dataset/test/NonDemented', 0)
+nonDemented = np.concatenate([nonDemented, NormalImages('dataset/Alzheimer_s Dataset/train/NonDemented', 0)])
 
 final_list = np.concatenate([demented, nonDemented])
 
@@ -90,8 +90,9 @@ line = []
 for h in new_set:
   line.append(h[0])
   if len(line) == 5:
-    cv2.imshow(np.concatenate([line[0], line[1], line[2], line[3], line[4]], axis=1))
-    print('')
+    cv2.imshow('Image Equalized', np.concatenate([line[0], line[1], line[2], line[3], line[4]], axis=1))
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
     line = []
 
 """#2- Pseudo-Cor"""
@@ -112,8 +113,9 @@ line = []
 for h in new_set:
   line.append(h[0])
   if len(line) == 5:
-    cv2.imshow(np.concatenate([line[0], line[1], line[2], line[3], line[4]], axis=1))
-    print('')
+    cv2.imshow('psedo-color', np.concatenate([line[0], line[1], line[2], line[3], line[4]], axis=1))
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
     line = []
 
 """#3- LBP"""
