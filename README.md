@@ -136,6 +136,17 @@ B. Abordagens em Aprendizado de Máquina<br>
 
 <p align="justify">O LBP mostrou-se bem aquém do que esperávamos, já que, em alguns trabalhos da literatura, foram obtidas acurácias melhores, com média entre 75% e 85%. No entanto, acreditamos que a queda de sua acurácia pode ser resultado do grande número de pixels de mais alta frequência. Por outro lado, a ResNet-18 cumpriu com seu trabalho e nos surpreendeu com sua acurácia entre 92% e 96%, mostrando, portanto, que o aprendizado de máquina é, certamente, muito importante e quase que indispensável para problemas de classificação na área da saúde. Assim, analisando nosso trabalho e os trabalhos relacionados, a DA é bastante amparada na literatura quanto ao uso de IA (Inteligência artificial), seja pela inúmera quantia de trabalhos e artigos feitos ou pela eficácia da IA demonstrada para resolução do problema. Portanto, torna-se resoluto o uso complementar do Processamento de Imagens e do Aprendizado de Máquina, pois ambos trabalham de forma simbiótica e efetiva, e podem melhorar nossas abstrações sobre os dados e, também, nossas tomadas de decisão.</p>
 
+
+<div align="center">
+  <img width="500em" src="https://github.com/Guilherme-Nicolasi/resnet-lbp-alzheimer/assets/26673126/31047bd7-68c1-485e-aea0-9f4aa3fa168b" />
+  
+  Fig. 13
+</div>
+
+
+
+O presente projeto pode ser acessado, também, através do Colab a partir do seguinte endereço: https://colab.research.google.com/drive/1DizTEw7su2Xz_e8MEn53Bw-ESuQVi3ko?usp=sharing
+
 ## Referências
 
 [1] N. Paiva, T. Escovedo, Detecção Precoce de Alzheimer Usando Machine Learning, Departamento de Informática, Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio), Rio de Janeiro,
