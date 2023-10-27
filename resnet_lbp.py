@@ -333,11 +333,11 @@ plt.xlabel('Predicted label')
 plt.ylabel('True label')
 plt.show()
 
-x = []
+"""x = []
 label = []
 for i in LBP_features:
   x.append(i[0])
-  label.append(i[1])
+  label.append(i[1])"""
 
 max_lbp_lenght = max(len(feature) for feature, label in LBP_features)
 
